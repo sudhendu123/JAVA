@@ -1,0 +1,89 @@
+package com.prac.pattern.behavioral;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 
+ * @author sudhendu.kumar
+ *
+ One example of the command pattern being executed in the real world is 
+ the idea of a table order at a restaurant: the waiter takes the order, 
+ which is a command from the customer.This order is then queued for the kitchen staff.
+   The waiter tells the chef that the a new order has come in, and the chef has 
+   enough information to cook the meal.
+ */
+		
+public class CommandPatternClient1 {
+
+	public static void main(String[] args) {
+		Stock abcStock = new Stock();
+
+		BuyStock buyStockOrder = new BuyStock(abcStock);
+		SellStock sellStockOrder = new SellStock(abcStock);
+
+		Broker broker = new Broker();
+		broker.takeOrder(buyStockOrder);
+		broker.takeOrder(sellStockOrder);
+
+		broker.placeOrders();
+	}
+}
+
+interface Order {
+	void execute();
+}
+
+class Stock {
+
+	private String name = "ABC";
+	private int quantity = 10;
+
+	public void buy() {
+		System.out.println("Stock [ Name: " + name + ", Quantity: " + quantity + " ] bought");
+	}
+
+	public void sell() {
+		System.out.println("Stock [ Name: " + name + ",Quantity: " + quantity + " ] sold");
+	}
+}
+
+class BuyStock implements Order {
+	private Stock abcStock;
+
+	public BuyStock(Stock abcStock) {
+		this.abcStock = abcStock;
+	}
+
+	public void execute() {
+		abcStock.buy();
+	}
+}
+
+class SellStock implements Order {
+	private Stock abcStock;
+
+	public SellStock(Stock abcStock) {
+		this.abcStock = abcStock;
+	}
+
+	public void execute() {
+		abcStock.sell();
+	}
+}
+
+class Broker {
+	private List<Order> orderList = new ArrayList<Order>();
+
+	public void takeOrder(Order order) {
+		orderList.add(order);
+	}
+
+	public void placeOrders() {
+
+		for (Order order : orderList) {
+			order.execute();
+		}
+		orderList.clear();
+	}
+}
