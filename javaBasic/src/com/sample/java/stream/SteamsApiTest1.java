@@ -34,7 +34,7 @@ public class SteamsApiTest1 {
 			}
 			return false;
 		}).findAny().orElse(null);
-		System.out.println(condition1);
+		System.out.println("condition1: " + condition1);
 
 		Product condition2 = (Product) productsList.stream().filter(p -> {
 			try {
@@ -65,16 +65,60 @@ public class SteamsApiTest1 {
 				.collect(Collectors.toMap(map -> map.getKey(), map -> map.getValue()));
 
 		System.out.println("filterMapByValue: " + filterMapByValue);
-		//Filter Map by both Keys and Values
-		 Map<Integer, String> filterbyKeyValue = hmap.entrySet()
-		         .stream()
-		         .filter(p -> p.getKey().intValue() <= 2) //filter by key
-		         //.limit(2)
-		         //.skip(1)
-		         .filter(map -> map.getValue().startsWith("A")) //filter by value
-		         .collect(Collectors.toMap(map -> map.getKey(), map -> map.getValue()));
+		// Filter Map by both Keys and Values
+		Map<Integer, String> filterbyKeyValue = hmap.entrySet().stream().filter(p -> p.getKey().intValue() <= 2) // filter
+																													// by
+																													// key
+				// .limit(2)
+				// .skip(1)
+				.filter(map -> map.getValue().startsWith("A")) // filter by value
+				.collect(Collectors.toMap(map -> map.getKey(), map -> map.getValue()));
 
-		     System.out.println("filterbyKeyValue: " + filterbyKeyValue);
+		System.out.println("filterbyKeyValue: " + filterbyKeyValue);
+
+		// checking unavailable b/w 2 list
+		List<Integer> s = new ArrayList<>();
+		List<Integer> s1 = new ArrayList<>();
+		s.add(1);
+		s.add(2);
+		s.add(3);
+		s.add(4);
+
+		s1.add(2);
+		s1.add(3);
+		List<Integer> unavailable = s.stream().filter(e -> (s1.stream().filter(d -> d.equals(e)).count()) < 1)
+				.collect(Collectors.toList());
+		System.out.println("unavailable: " + unavailable);
+
+		// filtering object based on condition
+		ArrayList<Product> db = new ArrayList<>();
+		db.add(new Product(1, "name1", 25001f));
+		db.add(new Product(1, "name2", 25002f));
+		db.add(new Product(2, "name2", 25003f));
+		db.add(new Product(3, "name3", 25004f));
+
+		List<Integer> list = new ArrayList<>();
+		list.add(1);
+		list.add(2);
+		List<Product> reqDel = new ArrayList<>();
+
+		list.forEach(del -> {
+			//getting fields	
+			String productName = db.stream().filter(g->del.equals(g.getId())).map(q->q.getName()).findAny()
+	                .orElse("");
+			System.out.println("productName :"+productName);
+			//getting Object
+			//getting list
+			List<Product> result = db.stream().filter(g -> {
+				if (del.equals(g.getId())) {
+					return true;
+				}
+				return false;
+			}).collect(Collectors.toList());
+
+			reqDel.addAll(result);
+		});
+		System.out.println("reqDel " + reqDel);
 	}
 
 }

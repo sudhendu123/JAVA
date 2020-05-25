@@ -1,10 +1,15 @@
 package com.sample.java.stream;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+
 
 public class StreamApiTest {
 	public static void main(String[] args) {
@@ -66,6 +71,23 @@ public class StreamApiTest {
 				.map(Product::getPrice) // fetching price by referring getPrice method
 				.collect(Collectors.toList()); // collecting as list
 		System.out.println(productPriceList1);
+		
+		//removing duplicate object in list of object
+		Set<Integer> nameSet = new HashSet<>();
+		List<Product> ProductDist = productsList.stream()
+		            .filter(e -> nameSet.add(e.getId()))
+		            .collect(Collectors.toList());
+		System.out.println("ProductDist :"+ProductDist);
+		
+		List<Product> ProductDist1 = productsList.stream().distinct().map(reqDto -> new Product(reqDto.getId(), reqDto.getPrice()))
+                .collect(Collectors.toList());
+		System.out.println("ProductDist1 "+ProductDist1);
+		
+		Collection<Product> nonDuplicatedElements = productsList.stream()
+				   .<Map<Integer, Product>> collect(HashMap::new,(m,e)->m.put(e.getId(), e), Map::putAll)
+				   .values();
+		
+		System.out.println("nonDuplicatedElements :"+nonDuplicatedElements);
 	}
 }
 
@@ -74,6 +96,12 @@ class Product implements Comparable<Product>{
 	String name;
 	float price;
 
+	public Product(int id,  float price) {
+		this.id = id;
+		this.price = price;
+	}
+	
+	
 	public Product(int id, String name, float price) {
 		this.id = id;
 		this.name = name;
@@ -83,6 +111,28 @@ class Product implements Comparable<Product>{
 	public float getPrice() {  
         return price;  
     }
+	
+	
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setPrice(float price) {
+		this.price = price;
+	}
 
 	@Override
 	public String toString() {
