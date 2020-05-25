@@ -11,11 +11,11 @@ public class CachedThreadPool {
 		    System.out.println("CPU cores: " + processors);
 		    //The easiest way to create ExecutorService is to use one of the factory methods of the Executors class.
 		    /**
-		     * These pools will typically improve the performanceof programs that execute many short-lived asynchronous tasks.
-		     * Calls to execute will reuse previously constructedthreads if available.
-		     *  If no existing thread is available, a newthread will be created and added to the pool. 
-		     *  Threads that havenot been used for sixty seconds are terminated and removed fromthe cache.
-		     *   Thus, a pool that remains idle for long enough willnot consume any resources.
+		     * These pools will typically improve the performance of programs that execute many short-lived asynchronous tasks.
+		     * Calls to execute will reuse previously constructed threads if available.
+		     *  If no existing thread is available, a new thread will be created and added to the pool. 
+		     *  Threads that have not been used for sixty seconds are terminated and removed from the cache.
+		     *   Thus, a pool that remains idle for long enough will not consume any resources.
 		     */
 		    
 		    ExecutorService executor = Executors.newCachedThreadPool();  
