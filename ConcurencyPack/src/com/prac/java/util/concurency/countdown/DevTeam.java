@@ -11,16 +11,19 @@ public class DevTeam extends Thread {
 	}
 
 	@Override
-    public void run() {
-        System.out.println("Task assigned to development team " +Thread.currentThread().getName());
-        try {
-                Thread.sleep(3000);
-        } catch (InterruptedException ex) {
-                ex.printStackTrace();
-        }
-        System.out.println("Task finished by development team "+Thread.currentThread().getName());
-        
-        //Each thread calls countDown() method on task completion.
-        countDownLatch.countDown();
-    }
+	public void run() {
+
+		System.out.println("Task assigned to development team " + Thread.currentThread().getName() + ":count: "
+				+ countDownLatch.getCount());
+
+		//Thread.sleep(3000);
+		// Each thread calls countDown() method on task completion.
+		countDownLatch.countDown();
+		//As many times we call countDown() it will reduce the count by one.
+		//countDownLatch.countDown();
+		//countDownLatch.countDown();
+		System.out.println("Task finished by development team " + Thread.currentThread().getName() + ":count: "
+				+ countDownLatch.getCount());
+
+	}
 }

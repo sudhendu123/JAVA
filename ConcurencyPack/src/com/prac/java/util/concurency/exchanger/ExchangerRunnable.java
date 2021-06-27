@@ -5,7 +5,7 @@ import java.util.concurrent.Exchanger;
 public class ExchangerRunnable {
 	
 	public static void main(String[] args) {
-		Exchanger exchanger = new Exchanger();
+		Exchanger<Object> exchanger = new Exchanger<Object>();
 
 		ExchangerRunnableTest exchangerRunnable1 =
 		        new ExchangerRunnableTest(exchanger, "A");
@@ -20,10 +20,10 @@ public class ExchangerRunnable {
 }
 class ExchangerRunnableTest implements Runnable{
 
-    Exchanger exchanger = null;
+    Exchanger<Object> exchanger = null;
     Object    object    = null;
 
-    public ExchangerRunnableTest(Exchanger exchanger, Object object) {
+    public ExchangerRunnableTest(Exchanger<Object> exchanger, Object object) {
         this.exchanger = exchanger;
         this.object = object;
     }

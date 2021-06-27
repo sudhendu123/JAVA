@@ -13,11 +13,11 @@ public class ConcurrentHashMapMain {
 	}
 	
 	public void concurrentMap() {
-		ConcurrentHashMap<String,String> concurrentHashMap = new ConcurrentHashMap();
+		ConcurrentHashMap<String,String> concurrentHashMap = new ConcurrentHashMap<String, String>();
         concurrentHashMap.put("A","Apple");
         concurrentHashMap.put("B","Blackberry");
         concurrentHashMap.put("C","Clackberry");
-        for (Map.Entry e : concurrentHashMap.entrySet()) {
+        for (Map.Entry<String,String> e : concurrentHashMap.entrySet()) {
         	concurrentHashMap.remove("B");
         	concurrentHashMap.put("D","DO");
         	System.out.println(e.getKey() + " = " + e.getValue());

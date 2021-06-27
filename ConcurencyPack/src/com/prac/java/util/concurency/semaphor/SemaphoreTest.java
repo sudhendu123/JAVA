@@ -2,6 +2,7 @@ package com.prac.java.util.concurency.semaphor;
 
 import java.util.concurrent.Semaphore;
 
+//We can use semaphores to limit the number of concurrent threads accessing a specific resource.
 public class SemaphoreTest {
 
 	// max 4 people
