@@ -8,6 +8,7 @@ public class SingleDimArray {
 		single();
 		single2();
 		single3();
+		single4();
 	}
 	
 	public static void single() {
@@ -17,6 +18,7 @@ public class SingleDimArray {
 		for(int b:a) {
 			System.out.println("a[] "+b);
 		}
+		System.out.println("1st index :"+a[1]);
 		
 	}
 	

@@ -17,7 +17,7 @@ public class ThreeDimArray {
 		int[][][] arr = new int[10][20][30];
 		arr[0][0][0] = 1;
 
-		System.out.println("arr[0][0][0] = " + arr[0][0][0]);
+		System.out.println("threeDim1 : arr[0][0][0] = " + arr[0][0][0]);
 	}
 
 	public static void threeDim2() {
@@ -26,13 +26,13 @@ public class ThreeDimArray {
 		for (int i = 0; i < 2; i++)
 			for (int j = 0; j < 2; j++)
 				for (int z = 0; z < 2; z++)
-					System.out.println("arr[" + i + "][" + j + "][" + z + "] = " + arr[i][j][z]);
+					System.out.println("threeDim2 : arr[" + i + "][" + j + "][" + z + "] = " + arr[i][j][z]);
 	}
 
 	public static void threeDim3() {
 		int[][][] arr = { { { 1, 2 }, { 3, 4 } }, { { 5, 6 }, { 7, 8 } } };
 
-		System.out.println("arr[0][0][0] = " + arr[0][0][0]);
+		System.out.println("threeDim3: arr[0][0][0] = " + arr[0][0][0]);
 	}
 
 	public static void threeDIm4() {

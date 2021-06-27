@@ -7,6 +7,7 @@ public class DoubleDimArray {
 	public static void main(String[] args) {
 		
 		//x[row_index][column_index]
+		double2();
 	}
 
 	public static void double1() {
@@ -24,5 +25,6 @@ public class DoubleDimArray {
             for (int j = 0; j < 2; j++) 
                 System.out.println("arr[" + i + "][" + j + "] = "
                                    + arr[i][j]); 
+        System.out.println("element at 0,1 : "+arr[0][1]);
 	}
 }
