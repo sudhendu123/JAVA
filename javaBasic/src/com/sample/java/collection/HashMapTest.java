@@ -15,20 +15,42 @@ import java.util.stream.Collectors;
 public class HashMapTest {
 
 	public static void main(String[] args) {
+		
+		
+		HashMap<String, String> hmapString = new HashMap<String, String>();
+		hmapString.put("a","a");
+		//hmapString.put("b",null);
+		hmapString.put("d","d");
+		//hmapString.put("c",null);
+		
+		List<String> removed = new ArrayList<String>();
+		removed.add("a");
+		List<String> nullEl = hmapString.entrySet().stream().filter(q->q.getValue()!=null).map(q->q.getKey()).collect(Collectors.toList());
+		System.out.println("nullEl :"+nullEl);
+		nullEl.removeAll(removed);
+		System.out.println("nullEl :"+nullEl);
+		
 		/* This is how to declare HashMap */
 		HashMap<Integer, String> hmap = new HashMap<Integer, String>();
-
+		List<String> emptyList = hmap.values().stream().filter(a->a.equals("0")).map(q->q).collect(Collectors.toList());
+		System.out.println("emptyList :"+emptyList);
+		
 		/* Adding elements to HashMap */
 		hmap.put(1, "Chaitanya");
 		hmap.put(2, "Ajeet");
+		hmap.put(3, "Ak");
+		hmap.put(4, "sk");
 		hmap.put(17, "Anuj");
 		hmap.put(18, "Rahul");
 		hmap.put(19, "Singh");
 		
+		System.out.println("hmap :"+hmap);
+		
+		
 		
 		//1 and 17 ,2 and 18 creates hash collision resolved by separate chaining 
 		
-		System.out.println(hmap.entrySet());	
+		System.out.println("entry set:"+hmap.entrySet());	
 		Set<String> mapValues = hmap.values().stream()
 			    .sorted()
 			    .collect(Collectors.toSet());
@@ -54,22 +76,7 @@ public class HashMapTest {
 		String var = hmap.get(2);
 		System.out.println("Value at index 2 is: " + var);
 
-		/* Remove values based on key */
-		hmap.remove(3);
-		System.out.println("Map key and values after removal:");
-		Set set2 = hmap.entrySet();
-		Iterator iterator2 = set2.iterator();
-		while (iterator2.hasNext()) {
-			Map.Entry mentry2 = (Map.Entry) iterator2.next();
-			System.out.print("Key is: " + mentry2.getKey() + " & Value is: ");
-			System.out.println(mentry2.getValue());
-		}
-
-		// FOR LOOP
-		System.out.println("For Loop:");
-		for (Map.Entry me : hmap.entrySet()) {
-			System.out.println("Key: " + me.getKey() + " & Value: " + me.getValue());
-		}
+		
 
 		// Checking Key Existence
 	    boolean flag = hmap.containsKey(49);
@@ -79,21 +86,59 @@ public class HashMapTest {
 	    boolean flag1 = hmap.containsValue("Rahul");
 	    System.out.println("String Singh exists in HashMap? : " + flag1);
 	    
-	    empl q=new empl(1,"name1",21,"210000");
-	    empl q1=new empl(2,"name2",21,"220000");
-	    empl q2=new empl(3,"name3",21,"230000");
+	    System.out.println("################### remove #################");
+	    /* Remove values based on key */
+		hmap.remove(4);
+		System.out.println("Map key and values after removal sk:");
+		// FOR LOOP
+		System.out.println("For Loop:");
+		for (Map.Entry<Integer,String> me : hmap.entrySet()) {
+			System.out.println("Key: " + me.getKey() + " & Value: " + me.getValue());
+		}
+	    //remove list of value
+	  	List<Integer> profileMdnLists=new ArrayList<>();
+	  	profileMdnLists.add(3);
+	  	hmap.keySet().removeAll(profileMdnLists);
+	  	System.out.println("After removing AK hmap :"+hmap);
+	    // remove by value
+	    hmap.values().removeIf(value -> value.contains("Chaitanya"));
+	    System.out.println("removed Chaitanya:"+hmap);
+	    // remove by key
+	    hmap.keySet().removeIf(key -> key == 2);
+	    System.out.println("removed Ajeet by key 2"+hmap);
+	    // remove by entry / combination of key + value
+	    hmap.entrySet().removeIf(entry -> entry.getKey() != 17);
+	    System.out.println("Removed rest except Anuj:"+hmap);
 	    
-	    Map<Integer,empl> objMap=new HashMap<>();
+	    System.out.println("################### remove #################");
+	    
+	    //filtering map
+	    Empl q=new Empl(1,"name1",21,"210000");
+	    Empl q1=new Empl(2,"name2",21,"220000");
+	    Empl q2=new Empl(3,"name3",21,"230000");
+	    
+	    Map<Integer,Empl> objMap=new HashMap<>();
 	    objMap.put(1, q);
 	    objMap.put(2, q1);
 	    objMap.put(3, q2);
 	    int age = objMap.entrySet().stream().map(m->m.getValue().getAge()).collect(Collectors.toList()).get(0);
-	    System.out.println("age :"+age);
-	    List<empl> emplList=new ArrayList<>();
+	    System.out.println("First Age :"+age);
+	    List<Integer> ageList = objMap.entrySet().stream().map(m->m.getValue().getAge()).collect(Collectors.toList());
+	    System.out.println("ageList  :"+ageList);
+	    List<String> nameList = objMap.values().stream().map(Empl::getName).collect(Collectors.toList());
+	    System.out.println("nameList  :"+nameList);
+	    List<Integer> idCondition = objMap.entrySet().stream().filter(m->m.getValue().getId()!=2).map(m ->m.getKey()).collect(Collectors.toList());
+	    System.out.println("idCondition  :"+idCondition);
+	    
+	    List<Empl> emplList=new ArrayList<>();
 	    emplList.add(q);
 	    emplList.add(q1);
-	    List<empl> emplList1=new ArrayList<>();
+	    List<Empl> emplList1=new ArrayList<>();
 	    emplList1.add(q2);
+	    Map<String, List<Empl>> complexMap1=new HashMap<>();
+	    complexMap1.put("1", emplList);
+	    complexMap1.put("2", emplList1);
+	    System.out.println("complexMap1 ="+complexMap1);
 	    Map<String, List<String>> complexMap=new HashMap<>();
 	    List<String> stringList=new ArrayList<>();
 	    stringList.add("q");
@@ -160,11 +205,33 @@ public class HashMapTest {
 	    	
 	    }
 	    
-	    empl e=null;
-	    e.setAge(1);
+	    Empl e=null;
+	    //e.setAge(1);
+	    
+	    Map<String, Integer> groupByMap =new HashMap<String, Integer>();
+	    groupByMap.put("1", 1);
+	    groupByMap.put("21", 2);
+	    groupByMap.put("31", 1);
+	    groupByMap.put("2", 1);
+	    groupByMap.put("3", 2);
+	    
+	    Map<Integer, List<String>> result =  groupByMap.entrySet().stream().collect(Collectors.groupingBy(
+	            Map.Entry::getValue,Collectors.mapping(Map.Entry::getKey, Collectors.toList())));
+	    System.out.println("Group By result "+result);
+	    
+	    Map<Integer, List<String>> result1 = new HashMap<Integer, List<String>>();
+	    for(Entry<String,Integer> entry : groupByMap.entrySet()){
+	            List<String> list = new ArrayList<String>();
+	            if(result1.containsKey(entry.getValue()))
+	                list = result1.get(entry.getValue());
+	            list.add(entry.getKey());
+	            result1.put(entry.getValue(), list);
+	    }
+	    System.out.println("Group By result1 "+result1);
 	    
 	}	
 	
+	//get key from value
 	public static <T, E> Set<T> getKeysByValue(Map<T, E> map, E value) {
 	    return map.entrySet()
 	              .stream()
@@ -172,18 +239,61 @@ public class HashMapTest {
 	              .map(Map.Entry::getKey)
 	              .collect(Collectors.toSet());
 	}
+	
+	//get key from value
+    public static <K, V> K getKey0(Map<K, V> map, V value)
+    {
+        for (Map.Entry<K, V> entry: map.entrySet())
+        {
+            if (value.equals(entry.getValue())) {
+                return entry.getKey();
+            }
+        }
+        return null;
+    }
+    
+	//get key from value
+	public static <K, V> K getKey(Map<K, V> map, V value)
+	{
+	    return map.entrySet()
+	                .stream()
+	                .filter(entry -> value.equals(entry.getValue()))
+	                .map(Map.Entry::getKey)
+	                .findFirst().get();
+	}
+	
+	//get key from value
+	public static <K, V> K getKe1y(Map<K, V> map, V value)
+    {
+        for (K key: map.keySet())
+        {
+            if (value.equals(map.get(key))) {
+                return key;
+            }
+        }
+        return null;
+    }
+	
+	//get key from value
+	public static <K, V> K getKey2(Map<K, V> map, V value)
+	{
+	    return map.keySet()
+	                .stream()
+	                .filter(key -> value.equals(map.get(key)))
+	                .findFirst().get();
+	}
 }
 
 
-class empl{
+class Empl{
 	
 	int id;
 	String name;
 	int age;
 	String sal;
 	
-	public empl() {}
-	public empl(int id, String name, int age, String sal) {
+	public Empl() {}
+	public Empl(int id, String name, int age, String sal) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -236,7 +346,7 @@ class empl{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		empl other = (empl) obj;
+		Empl other = (Empl) obj;
 		if (age != other.age)
 			return false;
 		if (id != other.id)
@@ -254,6 +364,22 @@ class empl{
 		return true;
 	}
 	
+	
+	
+}
+
+class Empl1 extends Empl{
+	
+	int dept;
+
+	public int getDept() {
+		return dept;
+	}
+
+	public void setDept(int dept) {
+		this.dept = dept;
+	}
+		
 	
 	
 }

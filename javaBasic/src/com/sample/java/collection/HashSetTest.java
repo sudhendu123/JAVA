@@ -19,15 +19,38 @@ public class HashSetTest {
 		set1.removeAll(set2);
 		System.out.println("elements after remove: "+set1);
 		
-		Set<empl> empSet=new HashSet<>();
-		empSet.add(new empl(1,"abc",24,"10000"));
-		empSet.add(new empl(2,"abc2",22,"20000"));
-		empSet.add(new empl(3,"abc3",23,"30000"));
-		empSet.add(new empl(4,"abc2",24,"4000"));
-		empSet.add(new empl(5,"abc2",24,"4000"));
-		empSet.add(new empl(6,"abc6",24,"4000"));
-		empSet.add(new empl(1,"abc",24,"10000"));
+		Set<Empl> dbEmpSet=new HashSet<>();
+		dbEmpSet.add(new Empl(1,"abc",24,"10000"));
+		dbEmpSet.add(new Empl(2,"abc2",22,"20000"));
+		dbEmpSet.add(new Empl(3,"abc3",23,"30000"));
+		dbEmpSet.add(new Empl(4,"abc2",24,"4000"));
+		dbEmpSet.add(new Empl(5,"abc2",24,"4000"));
+		dbEmpSet.add(new Empl(6,"abc6",24,"4000"));
+		dbEmpSet.add(new Empl(1,"abc",24,"10000"));
 		
-		Set<Integer> idSet = empSet.stream().map(empl::getId).collect(Collectors.toSet());
+		Set<Integer> idSet = dbEmpSet.stream().map(Empl::getId).collect(Collectors.toSet());
+		System.out.println("idSet :"+idSet);
+		
+		Set<Empl> modempSet=new HashSet<>();
+		modempSet.add(new Empl(1,"abc",24,"10001"));
+		modempSet.add(new Empl(2,"abc2",22,"20001"));
+		
+		Set<Empl> finalEmp=new HashSet<>();
+		
+		modempSet.forEach(p ->
+		dbEmpSet.stream()
+                      .filter(p1 -> p.getId()==p1.getId())
+                      .forEach(finalEmp::add));
+		
+		System.out.println("finalEmp :"+finalEmp);
+		
+		modempSet.forEach(p ->
+		dbEmpSet.stream()
+                      .filter(p1 -> p.getId()==p1.getId()
+                      && p.getAge()==p1.getAge())
+                      .forEach(finalEmp::add));
+		
+		System.out.println("finalEmp :"+finalEmp);
+		
 	}
 }
