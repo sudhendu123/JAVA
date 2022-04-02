@@ -57,10 +57,12 @@ class BasicSyncronized1Test {
 	}
 
 	public void process() {
+		System.out.println("Entry:"+Thread.currentThread().getName());
 		for (int i = 0; i < 1000; i++) {
 			task1();
 			task2();
 		}
+		System.out.println("Exit:"+Thread.currentThread().getName());
 	}
 
 	public void testCode() {
@@ -74,7 +76,7 @@ class BasicSyncronized1Test {
 
 		});
 		t1.start();
-
+		t1.setName("thread1");
 		Thread t2 = new Thread(new Runnable() {
 			@Override
 			public void run() {
@@ -83,7 +85,7 @@ class BasicSyncronized1Test {
 
 		});
 		t2.start();
-
+		t2.setName("thread2");	
 		try {
 			t1.join();
 			t2.join();

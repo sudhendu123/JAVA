@@ -30,6 +30,8 @@ public class CachedThreadPool {
 
 	          }  
 	        executor.shutdown();  
+	        //Returns true if all tasks have completed following shut down.
+	        //Note that isTerminated is never true unlesseither shutdown or shutdownNow was called first.
 	        while (!executor.isTerminated()) {
 	        	//System.out.println("terminated ");   
 	        	}  

@@ -34,6 +34,10 @@ public class ExecutorInvokeAll {
 
 		List<Future<String>> futures = null;
 		try {
+			//Executes the given tasks, returning a list of Futures holding their status and results when all complete. 
+			//Future.isDone is true for eachelement of the returned list.
+			//Note that a completed task could haveterminated either normally or by throwing an exception.
+			//The results of this method are undefined if the givencollection is modified while this operation is in progress.
 			futures = executorService.invokeAll(callablesTaskSet);
 		} catch (InterruptedException e) {
 			e.printStackTrace();

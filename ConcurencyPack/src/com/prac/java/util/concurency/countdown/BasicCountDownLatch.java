@@ -37,10 +37,14 @@ class Processor implements Runnable {
 
     public void run() {
         System.out.println("Thread started:"+Thread.currentThread().getName()+" count:"+latch.getCount());
-
+        String tname = Thread.currentThread().getName();
+        //System.out.println("Thread-name:"+tname);
+        if("pool-1-thread-2".equals(tname)) {
+        	System.out.println("pool-1-thread-2 operation");
+        }
         try {
             Thread.sleep(3000);
-        } catch (InterruptedException ignored) {}
+        }catch (InterruptedException ignored) {} 
         latch.countDown();
         System.out.println("Thread done:"+Thread.currentThread().getName()+" count:"+latch.getCount());
     }

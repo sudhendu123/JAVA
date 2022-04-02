@@ -10,6 +10,7 @@ public class ConcurrentHashMapMain {
 		ConcurrentHashMapMain concurrentHashMapMain=new ConcurrentHashMapMain();
 		//concurrentHashMapMain.concurrentException();
 		concurrentHashMapMain.concurrentMap();
+		concurrentHashMapMain.concurrentException();
 	}
 	
 	public void concurrentMap() {

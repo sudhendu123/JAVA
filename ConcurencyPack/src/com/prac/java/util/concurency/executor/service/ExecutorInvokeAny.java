@@ -32,6 +32,10 @@ public class ExecutorInvokeAny {
 
 		String result = null;
 		try {
+			//Executes the given tasks, returning the resultof one that has completed successfully 
+			//(i.e., without throwingan exception), if any do. Upon normal or exceptional return
+			//,tasks that have not completed are cancelled.
+			//The results of this method are undefined if the givencollection is modified while this operation is in progress.
 			result = executorService.invokeAny(callables);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
