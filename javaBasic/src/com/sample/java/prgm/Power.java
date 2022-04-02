@@ -1,5 +1,6 @@
 package com.sample.java.prgm;
 
+//2^5=2x2x2x2x2=32 , 5^2=5x5=25
 public class Power {
 
 	public static void main(String[] args) {
@@ -17,7 +18,7 @@ public class Power {
 		// Copying the exponent value to the loop counter
 		int i = p;
 		for (; i != 0; --i) {
-			result *= number;
+			result =result * number;
 		}
 
 		// Displaying the output

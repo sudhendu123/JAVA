@@ -2,7 +2,7 @@ package com.prac.java.util.concurency.exchanger;
 
 import java.util.concurrent.Exchanger;
 
-public class ExchangerDemo {
+public class ExchangerProducerConsumerDemo {
 
     public static void main(String[] args) {
         Exchanger<String> ex = new Exchanger<String>();

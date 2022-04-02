@@ -16,7 +16,11 @@ public class HashSetTest {
 		set2.add("1");
 		set2.add("2");
 		set2.add("3");
+		set2.add("7");
+		set2.add("8");
+		set2.add("6");
 		set1.removeAll(set2);
+		System.out.println("set2 :"+set2);
 		System.out.println("elements after remove: "+set1);
 		
 		Set<Empl> dbEmpSet=new HashSet<>();

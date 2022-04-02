@@ -9,7 +9,7 @@ public class StringTest {
 		char[] charArray = { 'j', 'a', 'v', 'a' };
 		String str = new String(charArray);
 		// string is immutable so if any char
-		// changes in the seq the whole thing is a new object in conastant pool.
+		// changes in the seq the whole thing is a new object in constant pool.
 		// toLowerCase(), toUpperCase
 
 		// In the above statement, either 1 or 2 string will be created.

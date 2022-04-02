@@ -26,6 +26,7 @@ public class LeapYear {
 	
 	public static void leapYear() {
 		//year to leap year or not
+//A leap year has 366 days (the extra day is the 29th of February), and it comes after every four years.
 	       int year = 2016;
 	       System.out.println();        
 	       if((year % 400 == 0) || ((year % 4 == 0) && (year % 100 != 0)))

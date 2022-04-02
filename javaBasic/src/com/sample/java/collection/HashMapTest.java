@@ -46,6 +46,9 @@ public class HashMapTest {
 		
 		System.out.println("hmap :"+hmap);
 		
+		//first entry
+		Entry<Integer, String> firstEntry = hmap.entrySet().stream().findFirst().get();
+		System.out.println(" firstEntry:"+firstEntry);
 		
 		
 		//1 and 17 ,2 and 18 creates hash collision resolved by separate chaining 
@@ -95,11 +98,13 @@ public class HashMapTest {
 		for (Map.Entry<Integer,String> me : hmap.entrySet()) {
 			System.out.println("Key: " + me.getKey() + " & Value: " + me.getValue());
 		}
-	    //remove list of value
+	    //remove list of value by list of keys
 	  	List<Integer> profileMdnLists=new ArrayList<>();
 	  	profileMdnLists.add(3);
 	  	hmap.keySet().removeAll(profileMdnLists);
 	  	System.out.println("After removing AK hmap :"+hmap);
+	  	//remove not part of key list
+	  	hmap.keySet().removeIf(e->!profileMdnLists.contains(e));
 	    // remove by value
 	    hmap.values().removeIf(value -> value.contains("Chaitanya"));
 	    System.out.println("removed Chaitanya:"+hmap);

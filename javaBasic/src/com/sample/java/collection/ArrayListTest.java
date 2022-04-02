@@ -54,6 +54,7 @@ public class ArrayListTest {
 		list.add("def");
 		list.add("ghi");
 		list.add(1, "sdf");
+		
 
 		list.remove(1);
 		list.removeIf(q->q.contains("abc"));
@@ -176,6 +177,11 @@ public class ArrayListTest {
 		empList12.add(new Empl(2, "abc2", 22, "20000"));
 		empList12.add(new Empl(3, "abc3", 23, "30000"));
 		empList12.add(new Empl(7, "abc4", 23, "30000"));
+		//convert list to linked list
+		LinkedList<String> nameLinkedList = empList12.stream()
+		        .map(Empl::getName)
+		        .collect(Collectors.toCollection(LinkedList::new));
+		System.out.println(" nameLinkedList :"+nameLinkedList);		
 		//convert list to map
 		Map<Integer, String> mapRes = empList12.stream().collect(Collectors.toMap(Empl::getId, Empl::getName));
 		System.out.println("mapRes :"+mapRes.isEmpty());
@@ -223,6 +229,9 @@ public class ArrayListTest {
 		String mdn="4";
 		boolean containEl = db.stream().anyMatch(mdn::contains);
 		System.out.println(" containEl :"+containEl);
+		
+		boolean allMatches = db.stream().allMatch(mdn::contains);
+		System.out.println(" allMatches :"+allMatches);
 		
 		List<Integer> differences = idslistOne.stream()
 	            .filter(element -> !idslistTwo.contains(element))

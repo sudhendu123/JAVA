@@ -93,6 +93,12 @@ public class GenericExample {
 		List<? extends A> listb=new ArrayList<B>();
 		List<? super B> listbb=new ArrayList<B>();
 		listbb.add(cc);
+		//listbb.add(aa);
+		listbb.add(bb);
+		
+		//listb.add(cc);
+		//listb.add(aa);
+		//listb.add(bb);
 		
 	}
 

@@ -1,15 +1,16 @@
 package com.sample.java.prgm;
 
 import java.util.Scanner;
-
+//1+2=3,2+3=5,3+5=8
+//0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89
 public class Fibonacci {
 
 	public static void main(String[] args) {
 
 		//fibNonrecur();
-		//fibRecur(10);
+		fibRecur(10);
 		//fib();
-		fiboRecursion();
+		//fiboRecursion();
 	}
 	
 

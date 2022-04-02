@@ -2,10 +2,13 @@ package com.sample.java.prgm;
 
 public class Operators {
 	public static void main(String args[]) {
-
+		
+		postFix();
+		preFix();
 		unaryOperator();
 		arthmaticOperator();
 		shiftOperator();
+		ternaryOperator();
 		bitwiseOperator1();
 	}
 
@@ -130,6 +133,12 @@ public class Operators {
 		System.out.println(-10 >> 2);//-3						   1111111111111101
 		System.out.println(-10 >>> 2);//1073741821	11111111111111 1111111111111101	(30 digit)
 	}
+	
+	/**
+	 * If the condition is true, the result of ? is returned. 
+	 * But, if the condition is false, the result of : is returned.
+	 * condition?true:false
+	 */
 
 	public static void ternaryOperator() {
 		int a = 2;
@@ -167,9 +176,10 @@ public class Operators {
 	}
 
 	public static void bitwiseOperator1() {
-		//bitwise AND	&
-		//bitwise exclusive OR	^
-		//bitwise inclusive OR	|
+		//bitwise AND	&, Bitwise AND operator: returns bit by bit AND of input values.
+		//bitwise exclusive OR	^ ,Bitwise XOR operator: returns bit by bit XOR of input values,
+		//^ takes two boolean operands and returns true if they are different
+		//bitwise inclusive OR	|, Bitwise OR operator: returns bit by bit OR of input values.
 		String s=null;
 		// as 1st exp is false result is false doesnt go to 2nd exp
 		System.out.println(s!=null&&s.isEmpty());//false
@@ -178,5 +188,22 @@ public class Operators {
 		//100(4) & 101(5)=100(4)
 		System.out.println(4&5);
 		
+		int x = 5, y = 7;   //declaring values  
+		// bitwise XOR     
+		// 0101 ^ 0111 = 0101 = 2    
+		// Performing an operation with xor and traditional operator   
+		System.out.println("x ^ y = " + (x ^ y));     
+		
+		boolean a=true,b=false;
+		System.out.println("a ^ b = " + (a ^ b)); //true
+		
+		boolean c=false,d=true;
+		System.out.println("c ^ d = " + (c ^ d)); //true
+		
+		boolean e=false,f=false;
+		System.out.println("e ^ f = " + (e ^ f)); //false
+		
+		boolean g=true,h=true;
+		System.out.println("g ^ h = " + (g ^ h)); //false
 	}
 }

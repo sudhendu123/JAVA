@@ -1,5 +1,12 @@
 package com.sample.java.basic;
 
+/**
+ * 
+ * There is only call by value in java, not call by reference.
+ * If we call a method passing a value, it is known as call by value.
+ * The changes being done in the called method, is not affected in the calling method.
+ *
+ */
 public class CallByValueNRef {
 
 	public static void main(String args[]) {

@@ -35,26 +35,7 @@ public class DeepCloneCopy {
 }
 
 
-class DeepDepartment implements Cloneable{
-    String empId;
- 
-    String grade;
- 
-    String designation;
- 
-    public DeepDepartment(String empId, String grade, String designation) {
-        this.empId = empId;
- 
-        this.grade = grade;
- 
-        this.designation = designation;
-    }
-    //Default version of clone() method.
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }
-}
- 
+
 class DeepEmployee implements Cloneable {
     int id;
  
@@ -78,5 +59,25 @@ class DeepEmployee implements Cloneable {
         emp.dept = (DeepDepartment) dept.clone();
  
         return emp;
+    }
+}
+
+class DeepDepartment implements Cloneable{
+    String empId;
+ 
+    String grade;
+ 
+    String designation;
+ 
+    public DeepDepartment(String empId, String grade, String designation) {
+        this.empId = empId;
+ 
+        this.grade = grade;
+ 
+        this.designation = designation;
+    }
+    //Default version of clone() method.
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }

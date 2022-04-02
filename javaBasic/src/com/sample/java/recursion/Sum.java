@@ -12,4 +12,14 @@ public class Sum {
 	    }
 	    return n;
 	}
+	/**
+	 * sum(n-1)+n
+	 * n=2
+	 * sum(2)=sum(1)+2=1+2=3
+	 * 
+	 * n=1
+	 * sum(1)=sum(0)+1=0+1=1
+	 * 
+	 * sum(0)=0
+	 */
 }
