@@ -31,7 +31,7 @@ public class Power {
 
 		int i = p;
 		while (i != 0) {
-			result *= number;
+			result =result* number;
 			--i;
 		}
 		System.out.println(number + "^" + p + " = " + result);

@@ -3,13 +3,13 @@ package com.sample.java.prgm;
 public class Operators {
 	public static void main(String args[]) {
 		
-		postFix();
+		//postFix();
 		preFix();
-		unaryOperator();
-		arthmaticOperator();
-		shiftOperator();
-		ternaryOperator();
-		bitwiseOperator1();
+		//unaryOperator();
+		//arthmaticOperator();
+		//shiftOperator();
+		//ternaryOperator();
+		//bitwiseOperator1();
 	}
 
 	public static void postFix() {
@@ -28,6 +28,12 @@ public class Operators {
 		System.out.println(y);// 11
 		y = x; // y=x-1=10,x=10
 		System.out.println(y);// 10
+		
+		System.out.println("X :"+x); //x=10
+		System.out.println("X++ :"+x++); //x=10
+		System.out.println("X++ :"+x++); //x=11
+		System.out.println("X++ :"+x++); //x=12
+		System.out.println("----------postfix ends--------------");
 	}
 
 	public static void preFix() {
@@ -54,7 +60,7 @@ public class Operators {
 		y = x--;// y=x-1=10
 		y = x--;// y=x-1=9
 		System.out.println(y);// 9
-
+		System.out.println(" post fix------------- x="+x);
 		x++;// x=x+1=11
 		System.out.println(x);// 11
 		x++;// x=x+1=12
@@ -63,6 +69,12 @@ public class Operators {
 		System.out.println(x);// 11
 		x--;// x=x-1=10
 		System.out.println(x);// 10
+		System.out.println(" post fix ends------------- x="+x);
+		++x;
+		System.out.println(" pre fix starts------------- x="+x);
+		++x;
+		System.out.println(" pre fix1------------- x="+x);
+		
 	}
 
 	public static void unaryOperator() {
@@ -83,8 +95,8 @@ public class Operators {
 		// 110(6)=1s(001)(1)=2's(1+1=2)(010) 2's is 1s+1
 		byte by = ~4;// ~4(100)=1111111111111 011(-5)
 		System.out.println("~4 " + by);// ~1101(13) = 111111111111 0010(-14)
-		postFix();
-		preFix();
+		//postFix();
+		//preFix();
 	}
 
 	public static void arthmaticOperator() {

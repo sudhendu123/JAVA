@@ -1,6 +1,6 @@
 package com.sample.java.prgm;
 
-public class Palindrome {
+public class APalindrome {
 
 	public static void main(String[] args) {
 		palindromeWhile(121);

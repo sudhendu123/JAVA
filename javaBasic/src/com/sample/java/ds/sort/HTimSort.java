@@ -1,6 +1,6 @@
 package com.sample.java.ds.sort;
 
-public class TimSort {
+public class HTimSort {
 
 	static int RUN = 32; 
 

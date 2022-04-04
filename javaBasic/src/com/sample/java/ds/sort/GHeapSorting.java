@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.PriorityQueue;
 
-public class HeapSorting {
+public class GHeapSorting {
 	// Function to implement heapsort using priority queue
 	static void libraryHeapSort(int[] array) {
 		PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();

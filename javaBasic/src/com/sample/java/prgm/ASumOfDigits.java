@@ -2,14 +2,14 @@ package com.sample.java.prgm;
 
 import java.util.Scanner;
 
-public class SumOfDigits {
+public class ASumOfDigits {
 
 	int sum = 0;
 
 	public static void main(String arg[]) {
 
 		long n,res;
-		SumOfDigits s=new SumOfDigits();
+		ASumOfDigits s=new ASumOfDigits();
 		Scanner sc=new Scanner(System.in);
 		System.out.println("Enter a number ");
 		n=sc.nextLong();
@@ -36,8 +36,8 @@ public class SumOfDigits {
 		System.out.println("Enter a number ");
 		n = Long.parseLong(arr[0]);
 		while (n != 0) {
-			sum += n % 10;
-			n /= 10;
+			sum = sum+n % 10;
+			n = n/10;
 		}
 		System.out.println("Sum of digits " + sum);
 	}
