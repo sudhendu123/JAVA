@@ -9,6 +9,7 @@ public class ArrayProgram {
 	public static void main(String[] args) {
 		int[] arr = {5, 9, 3, 15, 10, 2};
 		ArrayProgram ma = new ArrayProgram();
+		//min
 		System.out.println("min = "+ma.findMinimum(arr));
 		//reverse
 		int rev[]=ma.reverseArr(arr);
@@ -63,6 +64,16 @@ public class ArrayProgram {
             j = j - 1;
         }
 		return b;
+	}
+	
+	public static void reverse1(int[] numbers, int start, int end) {
+		while(start < end) {
+			int temp = numbers[start];
+			numbers[start] = numbers[end];
+			numbers[end] = temp;
+			start++;
+			end--;
+		}
 	}
 	
 	public static void palindrome(int arr[])
