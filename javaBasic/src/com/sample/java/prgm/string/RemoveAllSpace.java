@@ -1,4 +1,4 @@
-package com.sample.java.string;
+package com.sample.java.prgm.string;
 
 public class RemoveAllSpace {
 	 public static void main(String[] args) {  

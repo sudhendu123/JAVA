@@ -1,4 +1,4 @@
-package com.sample.java.string;
+package com.sample.java.prgm.string;
 
 import java.util.StringTokenizer;
 

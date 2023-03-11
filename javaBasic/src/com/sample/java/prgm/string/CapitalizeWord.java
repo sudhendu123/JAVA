@@ -1,4 +1,4 @@
-package com.sample.java.string;
+package com.sample.java.prgm.string;
 
 public class CapitalizeWord {
 	public static void main(String[] args) {
@@ -23,6 +23,7 @@ public class CapitalizeWord {
 	}
 
 	// ASCII for A=65,Z=90 and a=97,z=122 space=32
+	//A=65+32=97 which is small a , 32 is the difference between upper and lower case
 	public static void changecase(String s) {
 		for (int i = 0; i < s.length(); i++) {
 			int ch = s.charAt(i);

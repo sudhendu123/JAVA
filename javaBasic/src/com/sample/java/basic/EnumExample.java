@@ -21,7 +21,10 @@ public class EnumExample {
 		Day[] val = Day.values();
 		
 		Day day=Day.MONDAY;  
-		  
+		Day day1=Day.THURUSDAY;
+		System.out.println("equals="+day.equals(day));
+		System.out.println("equals="+day.equals(day1));
+		
 		switch(day){  
 		case SUNDAY:   
 		 System.out.println("sunday");  
@@ -30,7 +33,9 @@ public class EnumExample {
 		 System.out.println("monday");  
 		 break;  
 		default:  
-		System.out.println("other day");  
+		System.out.println("other day");
+		
+		
 	}
 		
 		

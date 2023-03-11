@@ -59,6 +59,10 @@ public class ExternalizationDemo {
 }
 
 class User implements Externalizable {
+	
+	//The serialization at runtime associates with each serializable class a version number called a serialVersionUID,
+	//which is used during deserialization to verify that the sender and receiver of a 
+	//serialized object have loaded classes for that object that are compatible with respect to serialization.
     public static final long serialVersionUID = 1234L;
  
     // attributes

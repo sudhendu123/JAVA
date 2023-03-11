@@ -4,6 +4,29 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+@FunctionalInterface
+interface Drawable {
+	public void draw();
+
+}
+
+//No Parameter
+interface Sayable {
+	public String say();
+}
+
+//Single Parameter
+@FunctionalInterface
+interface SingleParam {
+	public String SingleParamMethod(String name);
+}
+
+//Multiple Parameters
+@FunctionalInterface
+interface Addable {
+	int add(int a, int b);
+}
+
 public class LambdaExpressionExample {
 	public static void main(String[] args) {
 		int width = 10;
@@ -26,7 +49,7 @@ public class LambdaExpressionExample {
 
 		// You can omit function parentheses
 		SingleParam s2 = name -> {
-			;
+			
 			return "Hello, " + name;
 		};
 		System.out.println(s2.SingleParamMethod("Sonoo"));
@@ -83,25 +106,4 @@ public class LambdaExpressionExample {
 	}
 }
 
-@FunctionalInterface
-interface Drawable {
-	public void draw();
 
-}
-
-//No Parameter
-interface Sayable {
-	public String say();
-}
-
-//Single Parameter
-@FunctionalInterface
-interface SingleParam {
-	public String SingleParamMethod(String name);
-}
-
-//Multiple Parameters
-@FunctionalInterface
-interface Addable {
-	int add(int a, int b);
-}

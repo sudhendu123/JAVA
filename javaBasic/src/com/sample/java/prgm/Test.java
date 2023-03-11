@@ -15,9 +15,137 @@ import java.util.concurrent.Callable;
 //import com.sample.java.array.ArrayList;
 
 public class Test {
-	
+	public static final int DISPATCHER_GROUP_TYPE = 2;
 	final static int a=10;
+	private static List<String> getDeletedBroadcasters(List<KnCorpSubscriberDTO> finalGroupMemList, List<String> finalBroadcasters) {
+        List<String> deletedBroadcasters = new ArrayList<>();
+        for (String mdn : finalBroadcasters) {
+            KnCorpSubscriberDTO subscriberDTO = new KnCorpSubscriberDTO();
+            subscriberDTO.setMdn(mdn);
+            if (!finalGroupMemList.contains(subscriberDTO)) {
+                deletedBroadcasters.add(mdn);
+            }
+        }
+        finalBroadcasters.removeAll(deletedBroadcasters);
+        return deletedBroadcasters;
+    }
+	
+	 enum SUBS_CLIENT_TYPE {
+	        UNKNOWN(0),
+	        HANDSET(1),
+	        DESKTOP(2),
+	        DISPATCH_CLIENT(3),
+	        POC_DONOR_RADIO(4),
+	        POC_WIFIONLY(5),
+	        THIRDPARTYPOCCLIENT(6),
+	        ALIASMDN(7),
+	        GROUPMDN(8),
+	        MOBILEAPI(13),
+	        CROSSCARRIER(10),
+	        PDVCONNECT(11),
+	        NOTFOUND(-1),
+	        THIRDPARTYDISPATCHERCLIENT(12),
+	    	//LMR client type changes
+	        PTTRADIOHANDSETCLIENT(14),
+	        PTTRADIOCROSSCARRIERCLIENT(15),
+	        PTTRADIOWIFIONLYCLIENT(16),
+	        SGMDNPATCH(17),
+	        DATAGROUPMDN(18);
+
+
+
+	        int subsClientType;
+
+	        SUBS_CLIENT_TYPE(int type) {
+	            subsClientType = type;
+	        }
+
+	        public int value() {
+	            return subsClientType;
+	        }
+
+	        private static final Map<Integer, SUBS_CLIENT_TYPE> map = new HashMap<Integer, SUBS_CLIENT_TYPE>();
+
+	        static {
+	        	for (SUBS_CLIENT_TYPE element : SUBS_CLIENT_TYPE.values()) {
+					map.put(element.value(), element);
+				}
+	        }
+
+	        public static SUBS_CLIENT_TYPE getValueOf(int value) {
+	        	SUBS_CLIENT_TYPE client_TYPE =  map.get(value);
+	        	if (client_TYPE == null) {
+	        		client_TYPE = NOTFOUND;
+	        	}
+	        	return client_TYPE;
+	        }
+
+	    }
+	 
 	public static void main(String[] args) {
+		int newSubsClientType =1;
+		int oldSubsClientType =5;
+		String str = ""+SUBS_CLIENT_TYPE.HANDSET.value()+"|"+SUBS_CLIENT_TYPE.PTTRADIOHANDSETCLIENT.value()+","+SUBS_CLIENT_TYPE.CROSSCARRIER.value()+"|"+SUBS_CLIENT_TYPE.PTTRADIOCROSSCARRIERCLIENT.value()+","+SUBS_CLIENT_TYPE.PTTRADIOWIFIONLYCLIENT.value()+"|"+SUBS_CLIENT_TYPE.POC_WIFIONLY.value()+"";
+		String[] regEx1 = str.split(",");
+		for(int i=0;i<regEx1.length;i++) {
+		    if(String.valueOf(oldSubsClientType).matches(regEx1[i]) && String.valueOf(newSubsClientType).matches(regEx1[i])){
+		    	System.out.println("Client type change skipped");
+		    }
+		}
+		System.out.println(" ddone");
+		
+		List<KnCorpSubscriberDTO> finalGroupMemList =new ArrayList<KnCorpSubscriberDTO>();
+		finalGroupMemList.add(new KnCorpSubscriberDTO("999850000065"));
+		finalGroupMemList.add(new KnCorpSubscriberDTO("999850000193"));
+		finalGroupMemList.add(new KnCorpSubscriberDTO("999850000101"));
+		List<String> finalBroadcasters = new ArrayList<>();
+		finalBroadcasters.add("999850000101");
+		finalBroadcasters.add("999850000102");
+		finalBroadcasters.add("999850000103");
+		
+		List<String> finalBroadcasters1 = new ArrayList<>();
+		finalBroadcasters1.add("919850000065");
+		finalBroadcasters1.add("919850000066");
+		finalBroadcasters1.add("999850000101");
+		//finalBroadcasters1.add("999850000102");
+		
+		finalBroadcasters1.retainAll(finalBroadcasters);
+		System.out.println("common :"+finalBroadcasters);
+		
+	
+		//finalBroadcasters.clear();		
+		//finalBroadcasters.addAll(finalBroadcasters1);
+		finalBroadcasters1.removeAll(finalBroadcasters);
+		System.out.println("finalBroadcasters1 :"+finalBroadcasters1);
+		System.out.println("finalBroadcasters :"+finalBroadcasters.isEmpty());
+		
+		
+		
+		List<String> res = getDeletedBroadcasters(finalGroupMemList, finalBroadcasters);
+		System.out.println(" res :"+res);
+		
+		Set<Integer> removeGroupIds =new HashSet<>();
+		removeGroupIds.add(1);
+		Integer grpId=1;
+		Map<Integer, Integer> groupIdNTypeMap = new HashMap<Integer, Integer>();
+		groupIdNTypeMap.put(1, 2);
+		boolean keys = groupIdNTypeMap.containsValue(2);
+		System.out.println("contains :"+keys);
+		System.out.println(" type="+groupIdNTypeMap.get(grpId).equals(DISPATCHER_GROUP_TYPE));
+		
+		
+		
+		
+		Set<String> locWatcherGroupIdList = new HashSet<>();
+		locWatcherGroupIdList.add("3");
+		locWatcherGroupIdList.add("4");
+		Set<String> locWatcherGroupIdList1 = new HashSet<>();
+		locWatcherGroupIdList1.add("1");
+		locWatcherGroupIdList1.add("2");
+		locWatcherGroupIdList.removeAll(locWatcherGroupIdList1);
+		System.out.println("removed ="+(locWatcherGroupIdList.size()==0));
+		System.out.println("contains: "+locWatcherGroupIdList.contains(grpId.toString()));
+		
 		LinkedList<Integer> profileMdnLists=new LinkedList<>();
 	  	profileMdnLists.add(3);
 	  	profileMdnLists.add(2);

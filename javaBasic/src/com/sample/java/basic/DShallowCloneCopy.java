@@ -1,6 +1,6 @@
 package com.sample.java.basic;
 
-public class ShallowCloneCopy {
+public class DShallowCloneCopy {
 
 	public static void main(String[] args) {
 		 
