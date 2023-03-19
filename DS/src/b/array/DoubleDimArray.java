@@ -1,6 +1,6 @@
 
 
-package array;
+package b.array;
 
 public class DoubleDimArray {
 	
