@@ -6,12 +6,15 @@ import java.util.BitSet;
 public class ConversionFB {
 
 	public static void main(String[] args) {
+		
+		BitSet out = convertLongToBitSet(4610841387338815359L);
+		System.out.println("out :"+out);
 		BitSet clientFS_BitSet = convertHexStringToBitSet("FC3DC301729B23EFBEC2050C04FFD8C33");
 		BitSet subsFS_BiSet = convertHexStringToBitSet("3FC23CFBF12FFFFFFFBFDDFFDF6FFFD57F");
 		BitSet opsFS_BiSet = convertHexStringToBitSet("3FFEFC07FCEDFFFFFFFFE77FDFBD1FDFFF");
 		BitSet confFS_BitSet = convertHexStringToBitSet("3FFEFC07FCEDFFFFFFFFE77FDFBD1FDFFF");
 		BitSet license_BitSet = convertBinStringToBitSet(
-				"1111111111111011111111111111111111111011111111111111111111111111111111111111111111111111111101111111111111111111111111111111111111100");
+				"11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111");
 		// BitSet license_BitSet =
 		// convertBinStringToBitSet("0b11111111111110111111000000011111111100111011011111111111111111111111111111111111100111011111111101111110111101000111111101111111111111");
 		// BitSet license_BitSet
@@ -87,4 +90,21 @@ public class ConversionFB {
 		String binString = buffer.reverse().toString();
 		return binString;
 	}
+	
+	 public static BitSet convertLongToBitSet(long longValue) {
+	        String methodName = "convertLongToBitSet(long)";
+	        
+	        long value = longValue;
+	        BitSet bitSet = new BitSet(Long.SIZE);
+	        int index = 0;
+	        while (value != 0) {
+	            if (value % 2L != 0) {
+	                bitSet.set(index);
+	            }
+	            ++index;
+	            value = value >>> 1;
+	        }
+	        
+	        return bitSet;
+	    }
 }

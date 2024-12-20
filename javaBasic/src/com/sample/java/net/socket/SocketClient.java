@@ -1,5 +1,6 @@
 package com.sample.java.net.socket;
 
+import java.io.BufferedInputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -23,11 +24,21 @@ public class SocketClient {
 			// takes input from terminal
 			input = new DataInputStream(System.in);
 
+			 // takes input from the client socket 
+				/*
+				 * input = new DataInputStream( new
+				 * BufferedInputStream(socket.getInputStream()));
+				 */ 
+  
+            
+           
+  
+            
 			// sends output to the socket
 			out = new DataOutputStream(socket.getOutputStream());
 		} catch (UnknownHostException u) {
 			System.out.println(u);
-		} catch (IOException i) {
+		} catch (Throwable i) {
 			System.out.println(i);
 		}
 
@@ -54,6 +65,20 @@ public class SocketClient {
 		}
 	}
 
+	 public void publishEvent(byte[] readByteArray) {
+	    	TlvDecoder tlv=new TlvDecoder();
+	    	KnTLVMsgRespDTO resp = null;
+			try {
+				resp = tlv.decodeMessage(readByteArray);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			System.out.println("resp :"+resp);
+			KnPoCXLATableDetailsDTO tlvResp=DecodeTlv.decodeTlv(resp);
+			System.out.println("resp :"+tlvResp);
+	    	
+	    }
+	 
 	public static void main(String args[]) {
 		SocketClient client = new SocketClient("127.0.0.1", 5000);
 	}

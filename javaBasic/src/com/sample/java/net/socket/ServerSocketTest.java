@@ -7,13 +7,14 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 
+
 public class ServerSocketTest {
 	
 	
 	//initialize socket and input stream 
     private Socket          socket   = null; 
     private ServerSocket    server   = null; 
-    private DataInputStream in       =  null; 
+    private DataInputStream inStreamFromServer; 
   
     // constructor with port 
     public ServerSocketTest(int port) 
@@ -30,37 +31,64 @@ public class ServerSocketTest {
             System.out.println("Client accepted"); 
   
             // takes input from the client socket 
-            in = new DataInputStream( 
+            inStreamFromServer = new DataInputStream( 
                 new BufferedInputStream(socket.getInputStream())); 
   
+            
             String line = ""; 
   
-            // reads message from client until "Over" is sent 
+            
+            TlvDecoder tlv=new TlvDecoder();
+            byte[] readByteArray=null;
             while (!line.equals("Over")) 
             { 
                 try
                 { 
-                    line = in.readUTF(); 
-                    System.out.println(line); 
+                    line = inStreamFromServer.readUTF(); 
+                    //System.out.println(line);
+                    
+                    readByteArray=tlv.hexStringToByteArray(line);
+                    try {
+                    	publishEvent(readByteArray);
+            		} catch (Exception e) {
+            			e.printStackTrace();
+            		} 
+                    
+                    
   
                 } 
                 catch(IOException i) 
                 { 
                     System.out.println(i); 
                 } 
-            } 
-            System.out.println("Closing connection"); 
-  
-            // close connection 
-            socket.close(); 
-            in.close(); 
+            }
+            // close connection
+            System.out.println("Closing connection");
+    socket.close(); 
+    inStreamFromServer.close(); 
+           
         } 
         catch(IOException i) 
         { 
             System.out.println(i); 
-        } 
+        }
+        
     } 
   
+    public void publishEvent(byte[] readByteArray) {
+    	TlvDecoder tlv=new TlvDecoder();
+    	KnTLVMsgRespDTO resp = null;
+		try {
+			resp = tlv.decodeMessage(readByteArray);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("resp :"+resp);
+		KnPoCXLATableDetailsDTO tlvResp=DecodeTlv.decodeTlv(resp);
+		System.out.println("resp :"+tlvResp);
+    	
+    }
+    
     public static void main(String args[]) 
     { 
     	ServerSocketTest server = new ServerSocketTest(5000); 

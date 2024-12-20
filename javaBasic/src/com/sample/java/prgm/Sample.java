@@ -26,6 +26,24 @@ public class Sample {
 	
 	public static void main(String[] args) {
 		
+		try {
+		String SIP_COLON = "sip:";
+		String AT_DELIMITER = "@";
+		//String uriValue="org.3gpp.MCPTT-GKTP/global/byGroupID/tel:+9998001014236/~~/group/list-service/mgktp:GKTPs?xmlns(mgktp=urn:3gpp:ns:mcpttGKTP:1.0)";
+		String uriValue="org.3gpp.MCPTT-GKTP/global/byGroupID/sip:231.47982@poc1.sg.msiwoc.com/~~/group/list-service/mgktp:GKTPs?xmlns(mgktp=urn:3gpp:ns:mcpttGKTP:1.0)";
+		String groupId = uriValue.substring(uriValue.indexOf(SIP_COLON) + 4, uriValue.indexOf(AT_DELIMITER)).split("\\.")[1];
+		System.out.println("groupId :"+groupId);
+		}catch(Exception e) {
+			System.out.println("error "+e);
+		}
+		System.out.println("");
+		Map<Integer,Integer> map=new HashMap<Integer, Integer>();
+		map.put(1, 1);
+		map.put(2, 1);
+		map.put(3, 1);
+		
+		System.out.println(map.containsValue(0));
+		
 		String res = getBitFromDecimalRecord("2");
 		System.out.println("res: "+res);
 		

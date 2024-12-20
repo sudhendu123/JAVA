@@ -1,11 +1,11 @@
 package com.sample.java.basic;
-import static java.lang.System.*;
+import static java.lang.System.out;
 public class VarArgs {
 	
 	public static void main(String[] args) {
 		display(500,"hello");//one argument   
 		display(1000,"my","name","is","varargs");//four arguments
-		
+		varArgs(1,2,3);
 		int a=50;  
         Integer a2=new Integer(a);//Boxing  
   
@@ -21,6 +21,15 @@ public class VarArgs {
 		  for(String s:values){  
 		   out.println(s);  
 		  }  
-		 }  
+		 }
+	
+	public static void varArgs(int...strings)  {
+		int[] ex = strings;	
+		
+		for(int e:ex) {
+			System.out.println(e);
+		}
+		
+	}
 
 }
