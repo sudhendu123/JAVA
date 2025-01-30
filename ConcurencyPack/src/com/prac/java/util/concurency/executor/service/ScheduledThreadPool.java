@@ -16,15 +16,15 @@ public class ScheduledThreadPool {
 		
 		//schedule to run after sometime
 		System.out.println("Current Time = "+new Date());
-		for(int i=0; i<3; i++){
-			Thread.sleep(1000);
+		for(int i=0; i<5; i++){
+			//Thread.sleep(1000);
 			WorkerThread2 worker = new WorkerThread2("do heavy processing");
 			//task to run after 10 sec delay
 			//scheduledThreadPool.schedule(worker, 10, TimeUnit.SECONDS);
 			//task to run repetedly every 10 sec
-			//scheduledThreadPool.scheduleAtFixedRate(worker, 0, 10,TimeUnit.SECONDS);
+			scheduledThreadPool.scheduleAtFixedRate(worker, 0, 10,TimeUnit.SECONDS);
 			//task to run repeatedly 10 sec after previous task complete.
-			scheduledThreadPool.scheduleWithFixedDelay(worker, 0, 1,TimeUnit.SECONDS);
+			//scheduledThreadPool.scheduleWithFixedDelay(worker, 0, 1,TimeUnit.SECONDS);
 		}
 		
 		//add some delay to let some threads spawn by scheduler
