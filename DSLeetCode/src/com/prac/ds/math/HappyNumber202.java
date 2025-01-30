@@ -35,7 +35,7 @@ public class HappyNumber202 {
 
 		// Loop until either n becomes 1 (in which case n is a happy number) or n is
 		// seen again (in which case n is not a happy number)
-
+		//seen to stop from continuous loop, we need to see if number came once before	
 		while (n != 1 && !seen.contains(n)) {
 			// Add n to the set of seen numbers
 			seen.add(n);

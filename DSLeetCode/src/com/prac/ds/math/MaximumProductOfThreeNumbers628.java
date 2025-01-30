@@ -21,7 +21,7 @@ import java.util.Arrays;
 public class MaximumProductOfThreeNumbers628 {
 	
 	public static void main(String[] args) {
-		int num[]= {1,2,3,4};
+		int num[]= {21,111,41,31,54,23,78};
 		System.out.println("max product:"+maximumProduct(num));
 		System.out.println("max product:"+maximumProduct2(num));
 	}
@@ -39,14 +39,14 @@ public class MaximumProductOfThreeNumbers628 {
 	 */
 
 	public static int maximumProduct(int[] nums) {
-		int n = nums.length;
+		int len = nums.length;
 		Arrays.sort(nums);
 		// in case all the numbers are +ve / -ve then this'll be the desired result.
-		int max1 = nums[n - 1] * nums[n - 2] * nums[n - 3];
+		int positiveProduct = nums[len - 1] * nums[len - 2] * nums[len - 3];
 		// in case of mix of +ve & -ve numbers then product of two min & a max number
 		// can also be a possible result.
-		int max2 = nums[0] * nums[1] * nums[n - 1];
-		return Math.max(max1, max2);
+		int negativeProduct = nums[0] * nums[1] * nums[len - 1];
+		return Math.max(positiveProduct, negativeProduct);
 	}
 
 	/**

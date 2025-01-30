@@ -33,8 +33,9 @@ package com.prac.ds.math;
 public class KthSmallestFactor1492 {
 	
 	public static void main(String[] args) {
-		System.out.println("samllest factor"+kThSmallestFactor(4, 3));
-		System.out.println("samllest factor"+kThSmallestFactor(4, 4));
+		System.out.println("samllest factor:"+kThSmallestFactor(12, 6));
+		//System.out.println("samllest factor:"+kThSmallestFactor(4, 3));
+		//System.out.println("samllest factor:"+kThSmallestFactor(4, 4));
 	}
 	
 	public static int kThSmallestFactor(int N , int K) {

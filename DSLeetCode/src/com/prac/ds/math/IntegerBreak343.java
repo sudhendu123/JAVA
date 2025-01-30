@@ -15,7 +15,9 @@ public class IntegerBreak343 {
 
 	public static void main(String[] args) {
 
-		System.out.println("integer break:"+integerBreak(10));
+		System.out.println("integer break:" + integerBreak(10));
+		System.out.println("integer break:" + integerBreak1(10));
+		
 	}
 
 	public static int integerBreak(int n) {
@@ -46,6 +48,21 @@ public class IntegerBreak343 {
 		}
 
 		return -1;
+	}
+
+	public static int integerBreak1(int n) {
+		if (n == 2) {
+			return 1;
+		}
+		if (n == 3) {
+			return 2;
+		}
+		int answer = 1;
+		while (n > 4) {
+			n -= 3;
+			answer *= 3;
+		}
+		return answer * n;
 	}
 
 }

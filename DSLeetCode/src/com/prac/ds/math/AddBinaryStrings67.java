@@ -20,7 +20,7 @@ public class AddBinaryStrings67 {
 
 	public static void main(String[] args) {
 		//System.out.println("out :" + addBinary("10", "01"));
-		System.out.println("out :" + addBinary("1101", "111"));
+		System.out.println("out :" + addBinary("1101", "111")); //10100
 	}
 
 	public static String addBinary(String A, String B) {
