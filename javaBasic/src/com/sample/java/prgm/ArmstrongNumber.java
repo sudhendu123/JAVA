@@ -16,18 +16,19 @@ public class ArmstrongNumber {
 	}
 
 	public static void armStrongWhile1(int num) {
-		int originalNum, remainder, result = 0;
-		originalNum = num;
-		while (originalNum > 0) {
-			remainder = originalNum % 10;
+		int temp, remainder, result = 0;
+		temp = num;
+		while (num > 0) {
+			remainder = num % 10;
 			result = result + (remainder * remainder * remainder);
 			// quotient
-			originalNum = originalNum / 10;
+			num = num / 10;
+			System.out.println(num+":"+remainder+":"+result);
 		}
-		if (result == num)
-			System.out.println(num + " is an Armstrong number.");
+		if (result == temp)
+			System.out.println(temp + " is an Armstrong number.");
 		else
-			System.out.println(num + " is not an Armstrong number.");
+			System.out.println(temp + " is not an Armstrong number.");
 	}
 
 	public static void armStrongFor1(int num) {

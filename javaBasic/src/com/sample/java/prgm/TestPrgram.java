@@ -2,7 +2,7 @@ package com.sample.java.prgm;
 
 import java.util.List;
 
-import com.sample.java.array.ArrayList;
+import com.sample.java.array.ArrayTest;
 
 public class TestPrgram {
 

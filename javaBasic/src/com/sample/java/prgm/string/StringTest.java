@@ -8,8 +8,7 @@ public class StringTest {
 
 		char[] charArray = { 'j', 'a', 'v', 'a' };
 		String str = new String(charArray);
-		// string is immutable so if any char
-		// changes in the seq the whole thing is a new object in constant pool.
+		// string is immutable so if any char changes in the seq the whole thing is a new object in constant pool.
 		// toLowerCase(), toUpperCase
 
 		// In the above statement, either 1 or 2 string will be created.
@@ -43,12 +42,12 @@ public class StringTest {
 		boolean rq1 = ss1 == ss3;
 		boolean rq2 = ss1 == ss5;
 		boolean rq3 = ss3 == ss5;
-		System.out.println("ss1 == ss2 :" + rq);
-		System.out.println("ss1==ss3 :" + rq1);
-		System.out.println("ss1==ss5 :" + rq2);
-		System.out.println("ss3==ss5 :" + rq3);
-		System.out.println("ss5.hashCode() :" + ss5.hashCode());
-		System.out.println("ss1.hashCode() :" + ss1.hashCode());
+		System.out.println("ss1 == ss2 :" + rq);//false
+		System.out.println("ss1==ss3 :" + rq1);//true
+		System.out.println("ss1==ss5 :" + rq2);//false
+		System.out.println("ss3==ss5 :" + rq3);//false
+		System.out.println("ss5.hashCode() :" + ss5.hashCode());//-527611558
+		System.out.println("ss1.hashCode() :" + ss1.hashCode());//-527611558
 		char a = 'a' + 'a';
 		System.out.println('H' + 'a'); // o/p 169 add of ascii value
 		System.out.println("H" + "a"); // o/p Ha

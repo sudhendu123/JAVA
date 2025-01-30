@@ -51,4 +51,15 @@ public class ASumOfDigits {
 		}
 		return sum;
 	}
+	
+	public static void sumOfDigit(int num) {
+		int res=0,rem;
+		while(num>0) {
+			rem=num%10;
+			res=res+rem;
+			num=num/10;
+			System.out.println(num+":"+rem+":"+res);
+		}
+		System.out.println("res:"+res);
+	}
 }

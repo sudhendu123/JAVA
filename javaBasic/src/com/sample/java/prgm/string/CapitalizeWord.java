@@ -12,13 +12,16 @@ public class CapitalizeWord {
 	}
 
 	public static String capitalizeWord(String str) {
-		String words[] = str.split("\\s");
+		String words[] = str.split("\\s");//(first,letter,of,the,word,is,capital)
 		String capitalizeWord = "";
+		StringBuilder build=new StringBuilder();
 		for (String w : words) {
 			String first = w.substring(0, 1);
 			String afterfirst = w.substring(1);
 			capitalizeWord += first.toUpperCase() + afterfirst + " ";
+			build.append(first.toUpperCase()).append(afterfirst).append(" ");
 		}
+		System.out.println("Captalized: "+build);
 		return capitalizeWord.trim();
 	}
 
@@ -27,10 +30,10 @@ public class CapitalizeWord {
 	public static void changecase(String s) {
 		for (int i = 0; i < s.length(); i++) {
 			int ch = s.charAt(i);
-			if (ch > 64 && ch < 91) {
+			if (ch >= 65 && ch <= 90) {
 				ch = ch + 32;
 				System.out.print((char) ch);
-			} else if (ch > 96 && ch < 123) {
+			} else if (ch >= 97 && ch <= 122) {
 				ch = ch - 32;
 				System.out.print((char) ch);
 			}
@@ -75,10 +78,12 @@ public class CapitalizeWord {
 
 	public static void toUpper(String s) {
 		char arr[] = new char[s.length()];
+		StringBuilder build=new StringBuilder();
 		for (int i = 0; i < s.length(); i++) {
 			int ch = s.charAt(i);
 			ch = ch - 32;
 			arr[i] = (char) ch;
+			build.append((char)ch);
 		}
 		System.out.println(new String(arr));
 	}

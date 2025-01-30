@@ -45,5 +45,6 @@ public class SwapNumber {
 		
         System.out.println("num1 ="+num1);
         System.out.println("num2 ="+num2);
+        //5(0101) ^ 3(0011) = 6(0110); 
 	}
 }

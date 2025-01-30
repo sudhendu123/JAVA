@@ -19,11 +19,11 @@ public class CountCharInSent {
                 baseMap.put(ch, 1);  
             }  
         }  
-        Set<Character> keys = baseMap.keySet();  
-        for (Character ch : keys) {  
-            if (baseMap.get(ch) > 1) {  
-                System.out.println(ch + "  is " + baseMap.get(ch) + " times");  
-            }  
-        }  
+        System.out.println(baseMap);
+        for(Map.Entry<Character, Integer> m:baseMap.entrySet()) {
+        	System.out.println(m.getKey()+" : "+m.getValue());
+        }
+        	
+      
     }  
 }

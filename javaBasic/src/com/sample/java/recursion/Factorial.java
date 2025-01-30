@@ -15,11 +15,11 @@ public class Factorial {
 	
 	//5!=5x4x3x2x1=120
 	/**
-factorial(5) 
-   factorial(4) 
-      factorial(3) 
-         factorial(2) 
-            factorial(1) 
+nxfactorial(5) 
+   nxfactorial(4) 
+      nxfactorial(3) 
+         nxfactorial(2) 
+            nxfactorial(1) 
                return 1 
             return 2*1 = 2 
          return 3*2 = 6 

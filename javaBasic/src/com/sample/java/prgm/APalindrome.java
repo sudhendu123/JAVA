@@ -15,7 +15,9 @@ public class APalindrome {
 		while (n != 0) {
 			rem = n % 10;
 			rev = rem+rev * 10;
+			System.out.println("rev ="+rev+", rem"+rem);
 			n = n / 10;
+			System.out.println("num ="+n);
 		}
 		// palindrome if orignalInteger(temp) and reversedInteger(rev) are equal
 		if (temp == rev)

@@ -11,6 +11,7 @@ import java.util.List;
 class A { }
 class B extends A { }
 class C extends B { }
+
 List<? extends T> - reading and assigning:
 
 |-------------------------|-------------------|---------------------------------|
@@ -96,6 +97,7 @@ public class GenericExample {
 		//listbb.add(aa);
 		listbb.add(bb);
 		
+		//you cannot add anything to this as extends generic is used, it gives comiple time error
 		//listb.add(cc);
 		//listb.add(aa);
 		//listb.add(bb);

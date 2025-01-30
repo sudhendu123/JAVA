@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class LargestNumberArray {
 
-	public static void main(String args[]) {
+	public static void main(String argss[]) {
 		int[] a = new int[] { 22, 3, 550, 4, 11, 100 };
 		// Initialize maximum element 
 		int max = a[0];

@@ -9,7 +9,12 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-
+/**
+ * 
+ * This package consists of classes, interfaces and enum to allows functional-style operations on the elements.
+ *  We can use stream by importing java.util.stream package.
+ *
+ */
 
 public class StreamApiTest {
 	public static void main(String[] args) {

@@ -4,7 +4,6 @@ public class Vowel {
 
 	public static void main(String[] args) {
 		boolean isVowel = false;
-		;
 		char ch = 'a';
 		switch (ch) {
 		case 'a':

@@ -4,6 +4,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+Four main kinds of functional interfaces 
+Consumer
+Predicate
+Function 
+Supplier
+
+ *
+ */
 @FunctionalInterface
 interface Drawable {
 	public void draw();

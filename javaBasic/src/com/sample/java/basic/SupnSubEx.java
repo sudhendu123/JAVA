@@ -44,7 +44,8 @@ public static void main(String[] args) {
 		w.m2();
 		o/p in m21 in m2*/
 		
-		
+	s w=new ss();
+	w.m1();
 	}
 
 }
@@ -62,7 +63,7 @@ class ss extends s {
 		System.out.println("in m2");
 	}
 
-	/*
-	 * public void m1(){ System.out.println("in m21"); }
-	 */
+	
+	  public void m1(){ System.out.println("in m21"); }
+	 
 }

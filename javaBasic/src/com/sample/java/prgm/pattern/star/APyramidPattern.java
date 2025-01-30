@@ -13,14 +13,14 @@ public class APyramidPattern {
 		// row denotes the number of rows you want to print
 		int i, j;
 		// Outer loop work for rows
-		for (i = 0; i < row; i++) {
+		for (i = 0; i < row; i++) {//0,1,2,3,4
 			// inner loop work for space
-			for (j = row - i; j > 1; j--) {
+			for (j = row - i; j > 1; j--) {//5,4,3,2
 				// prints space between two stars
 				System.out.print(" ");
 			}
 			// inner loop for columns
-			for (j = 0; j <= i; j++) {
+			for (j = 0; j <= i; j++) { //0,1,2,3,4
 				// prints star
 				System.out.print("* ");
 			}

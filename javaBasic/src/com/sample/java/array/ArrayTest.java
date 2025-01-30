@@ -1,6 +1,6 @@
 package com.sample.java.array;
 
-public class ArrayList {
+public class ArrayTest {
 	public static void main(String[] args) {
 		// Normally, an array is a collection of similar type of elements which have a
 		// contiguous memory location.
